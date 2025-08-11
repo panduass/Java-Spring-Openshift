@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-openshift-jenkins
+  labels:
+    app: java-openshift-jenkins
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-openshift-jenkins
+  template:
+    metadata:
+      labels:
+        app: java-openshift-jenkins
+    spec:
+      containers:
+        - name: java-openshift-jenkins-container
+          image:  hfrnssc/java-openshift-jenkins:__IMAGE_TAG__
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-openshift-jenkins
+spec:
+  selector:
+    app: java-openshift-jenkins
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: java-openshift-jenkins
+spec:
+  to:
+    kind: Service
+    name: java-openshift-jenkins
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
