@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: java-openshift-jenkins-container
-          image:  hfrnssc/java-openshift-jenkins:__IMAGE_TAG__
+          image: panduass/java-openshift-jenkins:__IMAGE_TAG__
           ports:
             - containerPort: 8080
           env:
@@ -30,7 +30,6 @@ spec:
               memory: "1Gi"
               cpu: "500m"
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -42,7 +41,6 @@ spec:
     - port: 8080
       targetPort: 8080
 ---
-
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:

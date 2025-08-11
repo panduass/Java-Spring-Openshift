@@ -7,8 +7,8 @@ pipeline {
         GITHUB_REPO = "https://github.com/panduass/Java-Spring-Openshit.git"
         OPENSHIFT_PROJECT = "panduass-dev"
         OPENSHIFT_SERVER = "https://api.rm1.0a51.p1.openshiftapps.com:6443"
-        OPENSHIFT_TOKEN = credentials('openshift-token-hilda')
-        WEBHOOK_URL = "https://6fc7fb22f808.ngrok-free.app/github-webhook/"
+        OPENSHIFT_TOKEN = credentials('openshift-token-pandu')
+        WEBHOOK_URL = "https://563914a104f9.ngrok-free.app/github-webhook/"
     }
 
     stages {
