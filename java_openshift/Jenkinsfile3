@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "panduass/kelompok2-java-openshift-jenkins"
+        DOCKER_IMAGE = "panduass/kelompok2-springboot-openshift-jenkins"
         DOCKER_CREDENTIALS_ID = "docker-hub-pandu"
         GITHUB_REPO = "https://github.com/panduass/Java-Spring-Openshift.git"
         OPENSHIFT_PROJECT = "panduass-dev"
@@ -136,7 +136,7 @@ pipeline {
     post {
         success {
             script {
-                def route = sh(script: "oc get route kelompok2-java-openshift-jenkins -o jsonpath='{.spec.host}'", returnStdout: true).trim()
+                def route = sh(script: "oc get route kelompok2-springboot-openshift-jenkins -o jsonpath='{.spec.host}'", returnStdout: true).trim()
                 def routeUrl = "http://${route}"
                 echo "Deployment successful! Access your app at: ${routeUrl}"
             }
@@ -146,7 +146,7 @@ pipeline {
             script {
                 def payload = """
                 {
-                  "text": "Jenkins deployment failed for *kelompok2-java-openshift-jenkins* in build #${env.BUILD_NUMBER}",
+                  "text": "Jenkins deployment failed for *kelompok2-springboot-openshift-jenkins* in build #${env.BUILD_NUMBER}",
                   "attachments": [
                     {
                       "color": "danger",
