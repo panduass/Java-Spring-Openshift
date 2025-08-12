@@ -121,7 +121,7 @@ pipeline {
                     sh "oc project ${haproxyTarget.name}"
 
                     // Terapkan semua file HAProxy
-                    dir('.') {
+                    dir('java_openshift') {
                         sh "oc apply -f haproxy-service.yml"
                         sh "oc apply -f haproxy-config.yml"
                         sh "oc apply -f haproxy-deployment.yml"
