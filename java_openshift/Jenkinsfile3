@@ -121,9 +121,11 @@ pipeline {
                     sh "oc project ${haproxyTarget.name}"
 
                     // Terapkan semua file HAProxy
-                    sh "oc apply -f haproxy-service.yml"
-                    sh "oc apply -f haproxy-config.yml"
-                    sh "oc apply -f haproxy-deployment.yml"
+                    dir('.') {
+                        sh "oc apply -f haproxy-service.yml"
+                        sh "oc apply -f haproxy-config.yml"
+                        sh "oc apply -f haproxy-deployment.yml"
+                    }
                     
                     echo "HAProxy config applied successfully."
                 }
