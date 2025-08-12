@@ -12,7 +12,7 @@ pipeline {
         OPENSHIFT_TOKEN = credentials('openshift-token-pandu')
         OPENSHIFT_TOKEN_4= credentials('openshift-token-bintang')
         OPENSHIFT_TOKEN_5= credentials('openshift-token-fayyadh')
-        WEBHOOK_URL = "https://31ffd48ce41e.ngrok-free.app/github-webhook/"
+        WEBHOOK_URL = "https://28edef63768d.ngrok-free.app/github-webhook/"
     }
 
     stages {
