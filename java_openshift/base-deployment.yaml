@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pandu-java-openshift-jenkins
+  name: kelompok2-java-openshift-jenkins
   labels:
-    app: pandu-java-openshift-jenkins
+    app: kelompok2-java-openshift-jenkins
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: pandu-java-openshift-jenkins
+      app: kelompok2-java-openshift-jenkins
   template:
     metadata:
       labels:
-        app: pandu-java-openshift-jenkins
+        app: kelompok2-java-openshift-jenkins
     spec:
       containers:
-        - name: pandu-java-openshift-jenkins-container
-          image: panduass/pandu-java-openshift-jenkins:__IMAGE_TAG__
+        - name: kelompok2-java-openshift-jenkins-container
+          image: panduass/kelompok2-java-openshift-jenkins:__IMAGE_TAG__
           ports:
             - containerPort: 8080
           env:
@@ -33,10 +33,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: pandu-java-openshift-jenkins
+  name: kelompok2-java-openshift-jenkins
 spec:
   selector:
-    app: pandu-java-openshift-jenkins
+    app: kelompok2-java-openshift-jenkins
   ports:
     - port: 8080
       targetPort: 8080
@@ -44,11 +44,11 @@ spec:
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: pandu-java-openshift-jenkins
+  name: kelompok2-java-openshift-jenkins
 spec:
   to:
     kind: Service
-    name: pandu-java-openshift-jenkins
+    name: kelompok2-java-openshift-jenkins
   port:
     targetPort: 8080
   tls:
