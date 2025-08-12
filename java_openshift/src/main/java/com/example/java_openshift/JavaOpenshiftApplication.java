@@ -14,8 +14,8 @@ public class JavaOpenshiftApplication {
 	}
 
 	@GetMapping("/")
-	public String hello() {
-		return "Hello, Springboot with OpenShift!";
+	public String home() {
+		return "index"; // Mengembalikan nama file HTML tanpa ekstensi
 	}
 
 }
